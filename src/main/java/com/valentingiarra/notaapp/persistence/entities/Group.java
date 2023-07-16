@@ -1,6 +1,7 @@
 package com.valentingiarra.notaapp.persistence.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,6 +14,7 @@ import java.util.List;
 public class Group {
     @Id
     @Column(name = "group_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 30)
@@ -25,8 +27,10 @@ public class Group {
     private Integer position;
 
     // Relations
+    @JsonIgnore
     @OneToMany(mappedBy = "group")
     private List<Note> notes;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -40,10 +44,6 @@ public class Group {
     @JsonIgnore
     @Column(name = "updated_at")
     private Instant updatedAt;
-
-    public Group() {
-        this.position = this.user.getGroups().size() + 1;
-    }
 
     public Long getId() {
         return id;
@@ -77,11 +77,11 @@ public class Group {
         this.forecolor = forecolor;
     }
 
-    public Integer getposition() {
+    public Integer getPosition() {
         return position;
     }
 
-    public void setposition(Integer position) {
+    public void setPosition(Integer position) {
         this.position = position;
     }
 
