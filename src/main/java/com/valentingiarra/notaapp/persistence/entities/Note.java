@@ -28,7 +28,7 @@ public class Note {
     private Integer position;
 
     // Relations
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;

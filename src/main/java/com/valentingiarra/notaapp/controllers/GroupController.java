@@ -24,7 +24,7 @@ public class GroupController {
 
     // ---- GET
     @GetMapping("user_id/{userId}")
-    public ResponseEntity<ApiResponse> getAllUsers(@PathVariable("userId") Long userId) {
+    public ResponseEntity<ApiResponse> getAllGroupsByUserId(@PathVariable("userId") Long userId) {
         List<Group> groups = groupService.getGroupsByUserId(userId);
 
         if (groups.size() == 0) {

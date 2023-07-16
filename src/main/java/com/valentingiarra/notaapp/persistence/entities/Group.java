@@ -45,6 +45,10 @@ public class Group {
     @Column(name = "updated_at")
     private Instant updatedAt;
 
+    public void appendNote(Note note) {
+        this.notes.add(note);
+    }
+
     public Long getId() {
         return id;
     }

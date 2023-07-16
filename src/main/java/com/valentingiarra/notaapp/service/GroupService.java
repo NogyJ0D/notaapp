@@ -4,6 +4,7 @@ import com.valentingiarra.notaapp.persistence.entities.Group;
 import com.valentingiarra.notaapp.persistence.entities.Note;
 import com.valentingiarra.notaapp.persistence.entities.User;
 import com.valentingiarra.notaapp.persistence.repositories.GroupRepository;
+import com.valentingiarra.notaapp.persistence.repositories.NoteRepository;
 import com.valentingiarra.notaapp.persistence.repositories.UserRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,13 @@ import java.util.List;
 public class GroupService {
     private final GroupRepository groupRepository;
     private final UserRepository userRepository;
+    private final NoteRepository noteRepository;
 
     @Autowired
-    public GroupService(GroupRepository groupRepository, UserRepository userRepository) {
+    public GroupService(GroupRepository groupRepository, UserRepository userRepository, NoteRepository noteRepository) {
         this.groupRepository = groupRepository;
         this.userRepository = userRepository;
+        this.noteRepository = noteRepository;
     }
 
     public List<Group> getGroupsByUserId(Long userId) {
@@ -95,6 +98,7 @@ public class GroupService {
         if (notes != null && !notes.isEmpty()) {
             for (Note note : notes) {
                 note.setGroup(withoutGroup);
+                withoutGroup.appendNote(note);
             }
         }
 
@@ -103,9 +107,11 @@ public class GroupService {
         // Add position to new notes in reserved group
         List<Note> withoutGroupNotes = withoutGroup.getNotes();
         if (withoutGroupNotes != null && !withoutGroupNotes.isEmpty()) {
-            int maxPosition = withoutGroupNotes.size() + 1;
+            int pos = 1;
             for (Note note : withoutGroupNotes) {
-                note.setPosition(maxPosition++);
+                note.setPosition(pos);
+                noteRepository.save(note);
+                pos++;
             }
         }
 
