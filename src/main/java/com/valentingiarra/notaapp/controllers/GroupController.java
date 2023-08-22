@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(allowedHeaders = {"*"})
 @RequestMapping("groups")
 public class GroupController {
     private final GroupService groupService;

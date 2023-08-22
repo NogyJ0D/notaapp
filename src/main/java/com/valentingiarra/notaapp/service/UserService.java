@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService {
@@ -41,6 +42,20 @@ public class UserService {
         defaultGroup.setPosition(1);
         groupRepository.save(defaultGroup);
 
+        return user;
+    }
+
+    public Object loginUser(User data) {
+        User user = userRepository.findFirstByEmail(data.getEmail());
+        if (user == null) {
+            return "User doesn't exists.";
+        }
+
+        if (!Objects.equals(user.getPassword(), data.getPassword())) {
+            return "Incorrect password.";
+        }
+
+        user.setPassword("");
         return user;
     }
 }

@@ -8,32 +8,29 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @CrossOrigin(allowedHeaders = {"*"})
-@RequestMapping("users")
-public class UserController {
+@RequestMapping("auth")
+public class AuthController {
     private final UserService userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public AuthController(UserService userService) {
         this.userService = userService;
     }
 
-    // ---- GET
-    @GetMapping("")
-    public ResponseEntity<ApiResponse> getAllUsers() {
-        List<User> users = userService.getAllUsers();
+    // ---- POST
+    @PostMapping("login")
+    public ResponseEntity<ApiResponse> loginUser(@RequestBody User data) {
+        Object user = userService.loginUser(data);
 
-        if (users.size() == 0) {
-            return new ResponseEntity<>(new ApiResponse("empty", users), HttpStatus.OK);
+        if (user.getClass() != User.class) {
+            return new ResponseEntity<>(new ApiResponse("error", user), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(new ApiResponse("success", users), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse("success", user), HttpStatus.OK);
     }
 
-    // ---- POST
-    @PostMapping("")
+    @PostMapping("signup")
     public ResponseEntity<ApiResponse> createUser(@RequestBody User data) {
         Object user = userService.createUser(data);
 
@@ -42,8 +39,4 @@ public class UserController {
         }
         return new ResponseEntity<>(new ApiResponse("success", user), HttpStatus.CREATED);
     }
-
-    // ---- PUT
-
-    // ---- DELETE
 }
