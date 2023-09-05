@@ -120,4 +120,16 @@ public class Group {
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", backcolor='" + backcolor + '\'' +
+                ", forecolor='" + forecolor + '\'' +
+                ", position=" + position +
+                ", user=" + user +
+                '}';
+    }
 }

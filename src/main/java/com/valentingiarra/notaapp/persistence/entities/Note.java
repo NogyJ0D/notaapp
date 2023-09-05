@@ -134,4 +134,18 @@ public class Note {
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                ", backcolor='" + backcolor + '\'' +
+                ", forecolor='" + forecolor + '\'' +
+                ", position=" + position +
+                ", group=" + group +
+                ", user=" + user +
+                '}';
+    }
 }

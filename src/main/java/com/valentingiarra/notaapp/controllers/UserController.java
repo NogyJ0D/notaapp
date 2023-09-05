@@ -2,6 +2,7 @@ package com.valentingiarra.notaapp.controllers;
 
 import com.valentingiarra.notaapp.model.ApiResponse;
 import com.valentingiarra.notaapp.persistence.entities.User;
+import com.valentingiarra.notaapp.service.LogService;
 import com.valentingiarra.notaapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,15 +16,19 @@ import java.util.List;
 @RequestMapping("users")
 public class UserController {
     private final UserService userService;
+    private final LogService logService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, LogService logService) {
         this.userService = userService;
+        this.logService = logService;
     }
 
     // ---- GET
     @GetMapping("")
     public ResponseEntity<ApiResponse> getAllUsers() {
+        logService.WriteToLog("/users", "GET", null);
+
         List<User> users = userService.getAllUsers();
 
         if (users.size() == 0) {
@@ -35,6 +40,8 @@ public class UserController {
     // ---- POST
     @PostMapping("")
     public ResponseEntity<ApiResponse> createUser(@RequestBody User data) {
+        logService.WriteToLog("/users", "POST", data.toString());
+
         Object user = userService.createUser(data);
 
         if (user.getClass() != User.class) {
