@@ -163,3 +163,23 @@
 [04-09-23 23:06:47] [/notes/user_id/1/group_id/1] [GET] null
 [04-09-23 23:06:47] [/notes/user_id/1/group_id/1] [GET] null
 [04-09-23 23:06:52] [/notes/user_id/1/group_id/1] [GET] null
+[14-09-23 16:35:38] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='pepe@pepe.com', birthdate=null', userRole=null}
+[14-09-23 16:38:41] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='pepe@pepe.com', birthdate=null', userRole=null}
+[14-09-23 16:41:41] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='pepe@pepe.com', birthdate=null', userRole=null}
+[14-09-23 16:59:24] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='pepe@pepe.com', birthdate=null', userRole=null}
+[14-09-23 17:30:03] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='pepe@pepe.com', birthdate=null', userRole=null}
+[14-09-23 17:30:44] [/users] [GET] null
+[14-09-23 17:32:44] [/auth/signup] [POST] User{id=null, username='prueba2', firstname='Pepe', lastname='Argento', email='prueba2@prueba.com', birthdate=Tue Apr 01 21:00:00 ART 2003', userRole=null}
+[14-09-23 17:36:23] [/users] [GET] null
+[14-09-23 17:56:19] [/auth/signup] [POST] User{id=null, username='eje1', firstname='Pepe', lastname='Argento', email='eje1@eje.com', birthdate=Tue Apr 01 21:00:00 ART 2003', userRole=0}
+[14-09-23 20:23:54] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='pepe@pepe.com', birthdate=null', userRole=0}
+[14-09-23 20:24:05] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje1@eje.com', birthdate=null', userRole=0}
+[14-09-23 20:25:04] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje1@eje.com', birthdate=null', userRole=1}
+[14-09-23 20:25:08] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje1@eje.com', birthdate=null', userRole=1}
+[14-09-23 21:27:11] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje1@eje.com', birthdate=null', userRole=1}
+[14-09-23 21:52:30] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje1@eje.com', birthdate=null', userRole=1}
+[14-09-23 21:58:56] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje1@eje.com', birthdate=null', userRole=1}
+[14-09-23 22:53:01] [/auth/signup] [POST] User{id=null, username='eje2', firstname='Pepe', lastname='Argento', email='eje2@eje.com', birthdate=Tue Apr 01 21:00:00 ART 2003', userRole=1}
+[14-09-23 22:54:30] [/users] [GET] null
+[14-09-23 22:56:11] [/users] [GET] null
+[14-09-23 22:57:28] [/users] [GET] null

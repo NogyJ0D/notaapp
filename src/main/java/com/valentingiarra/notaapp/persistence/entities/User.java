@@ -1,6 +1,7 @@
 package com.valentingiarra.notaapp.persistence.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -30,6 +31,9 @@ public class User {
     @Column(nullable = false)
     private Date birthdate;
 
+    @Column(name = "user_role")
+    private int userRole = 1; // 1 user, 100 admin
+
     // Relations
     @JsonIgnore
     @OneToMany(mappedBy = "user")
@@ -47,6 +51,21 @@ public class User {
     @JsonIgnore
     @Column(name = "updated_at")
     private Instant updatedAt;
+
+    public User () {
+
+    }
+
+    public User(Long id, String username, String firstname, String lastname, String email, String password, Date birthdate, int userRole) {
+        this.id = id;
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.birthdate = birthdate;
+        this.userRole = userRole;
+    }
 
     public Long getId() {
         return id;
@@ -136,6 +155,10 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
+    public int getUserRole() {return userRole;}
+
+    public void setUserRole(int userRole) {this.userRole = userRole;}
+
     @Override
     public String toString() {
         return "User{" +
@@ -144,7 +167,8 @@ public class User {
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
-                ", birthdate=" + birthdate +
+                ", birthdate=" + birthdate + '\'' +
+                ", userRole=" + userRole +
                 '}';
     }
 }
