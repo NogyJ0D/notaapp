@@ -183,3 +183,11 @@
 [14-09-23 22:54:30] [/users] [GET] null
 [14-09-23 22:56:11] [/users] [GET] null
 [14-09-23 22:57:28] [/users] [GET] null
+[15-09-23 08:13:14] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje2@eje.com', birthdate=null', userRole=1}
+[15-09-23 08:13:20] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje2@eje.com', birthdate=null', userRole=1}
+[15-09-23 08:13:35] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje1@eje.com', birthdate=null', userRole=1}
+[15-09-23 08:13:55] [/users] [GET] null
+[19-09-23 09:11:48] [/groups/user_id/1] [GET] null
+[19-09-23 09:15:26] [/auth/login] [POST] User{id=null, username='null', firstname='null', lastname='null', email='eje1@eje.com', birthdate=null', userRole=1}
+[19-09-23 09:15:33] [/users] [GET] null
+[19-09-23 09:16:07] [/groups/user_id/1] [GET] null

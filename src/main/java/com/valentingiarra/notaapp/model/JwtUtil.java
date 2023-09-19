@@ -63,7 +63,7 @@ public class JwtUtil {
             }
         } catch (ExpiredJwtException e) {
             return "Session expired. Log in again.";
-        } catch (MalformedJwtException | IllegalArgumentException e) {
+        } catch (Exception e) {
             return e.getMessage();
         }
 
@@ -75,7 +75,10 @@ public class JwtUtil {
         Object loggedUser = this.isLogged(req);
 
         // Not logged
-        if (loggedUser.getClass() == String.class) {
+        if (loggedUser == null) {
+            return "Authentication error.";
+        }
+        else if (loggedUser.getClass() == String.class) {
             return loggedUser.toString();
         }
 
